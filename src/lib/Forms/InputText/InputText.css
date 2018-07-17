@@ -1,0 +1,75 @@
+.InputText {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 12px 0 2px 0;
+}
+
+.InputText__form {
+  padding: 3px 0;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  font-size: 14pt;
+}
+
+.InputText__placeholder {
+  position: absolute;
+  top: 16px;
+  bottom: 0;
+  left: 0;
+  color: rgb(89, 89, 89);
+
+  transition-property: all;
+  transition-duration: 200ms;
+  transition-timing-function: ease-out;
+
+  pointer-events: none;
+}
+
+input[type="text"].InputText__form:focus + .InputText__placeholder,
+input[type="text"].InputText__form:focus + .InputText__label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 10px;
+  color: var(--brand);
+}
+
+.InputText__label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 10px;
+  color: rgb(89, 89, 89);
+}
+
+.InputText__underline {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: #eaeaea;
+}
+
+.InputText__underline--focus {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  height: 2px;
+  opacity: 0;
+  width: 100%;
+  transform: scaleX(.5);
+
+  transition-property: background-color, opacity, transform;
+  transition-duration: 300ms;
+  transition-timing-function: ease-out;
+}
+
+input[type="text"].InputText__form:focus ~ .InputText__underline--focus {
+  background-color: var(--brand);
+  opacity: 1;
+  transform: scale(1);
+}
