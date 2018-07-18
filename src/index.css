@@ -1,6 +1,9 @@
 * {
   --brand: #66327c;
 }
+h2 {
+  color: var(--brand);
+}
 body {
   margin: 0;
   padding: 0;

@@ -1,0 +1,104 @@
+/* .fr-checkbox { */
+.Checkbox {
+  display: inline-flex;
+  align-items: center;
+  margin: 8px 0;
+  cursor: pointer;
+}
+  
+.Checkbox > input[type="checkbox"] {
+  opacity: 0;
+  display: inline-block;
+  width: 0;
+  height: 0;
+}
+
+.Checkbox > input[type="checkbox"]:checked + .Checkbox__square {
+  background-color: var(--brand);
+  border-color: var(--brand);
+}
+
+.Checkbox__square {
+  display: inline-block;
+  margin: 0 8px;
+  position: relative;
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #a1a1a1;
+  border-radius: 2px;
+  background-color: white;
+  transition-property: background-color;
+  transition-duration: 300ms;
+}
+
+.Checkbox__ripple {
+  position: absolute;
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  top: -16px;
+  left: -16px;
+}
+
+.Checkbox__square--checked > .Checkbox__ripple {
+  position: absolute;
+  background-color: var(--brand);
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  top: -16px;
+  left: -16px;
+  border-radius: 50%;
+  animation: ripple-effect 540ms 100ms ease-out;
+  opacity: 0;
+  transform: scale(0);
+}
+
+@keyframes ripple-effect {
+  from {
+    opacity: 1;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  90% {
+    transform: scale(1);
+    opacity: 0.05;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.Checkbox-checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.Checkbox-checkmark-path {
+  stroke: white;
+  stroke-width: 2.7px;
+}
+
+.Checkbox__square--checked > .Checkbox-checkmark > .Checkbox-checkmark-path {
+  stroke: white;
+  animation: draw-checkmark 300ms ease-out;
+}
+
+@keyframes draw-checkmark {
+  from {
+    stroke-dasharray: 0;
+    stroke-dashoffset: -30;
+    stroke: transparent;
+  }
+  to {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 0;
+  }
+
+}
+  
