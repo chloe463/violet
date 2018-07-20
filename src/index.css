@@ -1,5 +1,8 @@
 * {
   --brand: #66327c;
+  --accent: #e03c8a;
+  --gray: #cccccc;
+  --light-gray: #eaeaea;
 }
 h2 {
   color: var(--brand);

@@ -1,0 +1,14 @@
+.Option {
+  list-style: none;
+  line-height: 2.7em;
+  text-indent: 18px;
+  cursor: pointer;
+}
+
+.Option:hover {
+  background-color: #eaeaea;
+}
+
+.Option--selected {
+  background-color: var(--light-gray);
+}
