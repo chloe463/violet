@@ -19,31 +19,26 @@
   top: 16px;
   bottom: 0;
   left: 0;
-  color: rgb(89, 89, 89);
+  color: var(--gray);
 
   transition-property: all;
   transition-duration: 200ms;
   transition-timing-function: ease-out;
 
   pointer-events: none;
+
+  transform-origin: 0 0;
 }
 
-input[type="text"].InputText__form:focus + .InputText__placeholder,
-input[type="text"].InputText__form:focus + .InputText__label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 10px;
+input[type="text"].InputText__form:not(:placeholder-shown) + .InputText__placeholder {
+  color: var(--gray);
+  transform: translateY(-18px) scale(.75);
+}
+input[type="text"].InputText__form:focus + .InputText__placeholder {
   color: var(--brand);
+  transform: translateY(-18px) scale(.75);
 }
 
-.InputText__label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 10px;
-  color: rgb(89, 89, 89);
-}
 
 .InputText__underline {
   position: absolute;
@@ -51,7 +46,7 @@ input[type="text"].InputText__form:focus + .InputText__label {
   display: block;
   height: 1px;
   width: 100%;
-  background-color: #eaeaea;
+  background-color: var(--light-gray);
 }
 
 .InputText__underline--focus {

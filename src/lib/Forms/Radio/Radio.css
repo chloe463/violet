@@ -4,7 +4,7 @@
   margin: 0 8px;
   cursor: pointer;
 }
-  
+
 .Radio__circleContainer {
   position: relative;
   display: inline-block;
@@ -28,19 +28,18 @@
   box-sizing: border-box;
   width: 20px;
   height: 20px;
-  border: 2px solid #cccccc;
+  border: 2px solid var(--gray);
   border-radius: 50%;
 }
 
 .Radio__innerCircle {
   position: absolute;
-  top: 3px;
-  left: 3px;
+  top: 5px;
+  left: 5px;
   display: inline-block;
   box-sizing: border-box;
-  width: 14px;
-  height: 14px;
-  border: 2px solid #cccccc;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   transition-property: transform;
   transition-duration: 200ms;
@@ -52,7 +51,7 @@ input[type="radio"].Radio__inputRadio:checked + .Radio__outerCircle {
   border-color: var(--brand);
 }
 input[type="radio"].Radio__inputRadio:checked ~ .Radio__innerCircle {
-  border-color: white;
+  border-color: var(--white);
   background-color: var(--brand);
   transform: scale(1);
 }

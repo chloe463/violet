@@ -6,7 +6,7 @@
 }
 
 .Option:hover {
-  background-color: #eaeaea;
+  background-color: var(--light-gray);
 }
 
 .Option--selected {

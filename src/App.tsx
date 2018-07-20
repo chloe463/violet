@@ -19,9 +19,9 @@ class App extends React.Component<{}, IAppState> {
   constructor(props: any) {
     super(props);
     this.state = {
-      checkbox: { val1: false, val2: true, val3: false },
-      name: 'Violet',
-      radio: 'val1',
+      checkbox: { val1: false, val2: false, val3: false },
+      name: '',
+      radio: '',
       text: '',
       select: null
     };

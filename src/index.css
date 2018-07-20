@@ -1,8 +1,11 @@
 * {
   --brand: #66327c;
   --accent: #e03c8a;
-  --gray: #cccccc;
+
+  --gray: #787878;
   --light-gray: #eaeaea;
+  --black: #1c1c1c;
+  --white: #fffffb;
 }
 h2 {
   color: var(--brand);

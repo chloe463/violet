@@ -9,28 +9,13 @@ export interface IInputTextProps {
   onBlur?: (event: any) => void;
   onChange: (event: any) => void;
 }
-export interface IInputTextState {
-  labelClass: string;
-}
 
-export default class InputText extends React.Component<IInputTextProps, IInputTextState> {
+export default class InputText extends React.Component<IInputTextProps> {
   constructor(props: IInputTextProps) {
     super(props);
-    this.state = {
-      labelClass: props.value.length ? 'InputText__label' : 'InputText__placeholder',
-    };
 
     this.onFocus = this.onFocus.bind(this);
     this.onBlur  = this.onBlur.bind(this);
-  }
-
-  shouldComponentUpdate(nextProps: IInputTextProps, nextState: IInputTextState) {
-    if (nextProps.value.length === 0 && nextState.labelClass === 'InputText__label') {
-      this.setState({
-        labelClass: 'InputText__placeholder'
-      });
-    }
-    return true;
   }
 
   onFocus(event): void {
@@ -40,9 +25,6 @@ export default class InputText extends React.Component<IInputTextProps, IInputTe
   }
 
   onBlur(event): void {
-    this.setState({
-      labelClass: this.props.value.length ? 'InputText__label' : 'InputText__placeholder'
-    })
     if (this.props.onBlur) {
       this.props.onBlur(event);
     }
@@ -54,11 +36,12 @@ export default class InputText extends React.Component<IInputTextProps, IInputTe
         <input type="text"
           className="InputText__form"
           value={this.props.value}
-          onInput={this.props.onChange}
+          onChange={this.props.onChange}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
+          placeholder="&nbsp;"
         />
-        <span className={this.state.labelClass}>{this.props.label}</span>
+        <span className="InputText__placeholder">{this.props.label}</span>
         <div className="InputText__underline" />
         <div className="InputText__underline--focus" />
       </div>

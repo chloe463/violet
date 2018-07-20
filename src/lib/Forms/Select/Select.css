@@ -13,7 +13,7 @@
   height: 0;
   margin: auto;
   content: '';
-  border-top: 7px solid #CCCCCC;
+  border-top: 7px solid var(--gray);
   border-right: 5px solid transparent;
   border-left: 5px solid transparent;
 }
@@ -39,7 +39,7 @@
 .Select__label--selected {
   position: absolute;
   pointer-events: none;
-  color: #a1a1a1;
+  color: var(--gray);
   transform: translateY(-22px) scale(.8);
 }
 
@@ -51,7 +51,7 @@
   height: 32px;
   font-size: 12pt;
   border: none;
-  border-bottom: 1px solid rgba(0,0,0,.54);
+  border-bottom: 1px solid var(--gray);
   border-radius: 0;
   cursor: pointer;
 }
@@ -77,7 +77,7 @@
   transition-property: transform, opacity;
   transition-duration: .15s;
   transition-timing-function: ease-out;
-  background-color: #ffffff;
+  background-color: var(--white);
   box-shadow: 0 2px 5px rgba(0,0,0,.2);
   cursor: pointer;
 
