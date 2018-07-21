@@ -1,7 +1,6 @@
 .Radio {
   position: relative;
   display: inline-flex;
-  margin: 0 8px;
   cursor: pointer;
 }
 
@@ -10,7 +9,6 @@
   display: inline-block;
   width: 20px;
   height: 20px;
-  margin-right: 8px;
 }
 
 .Radio__inputRadio {
@@ -86,4 +84,8 @@ input[type="radio"].Radio__inputRadio:checked ~ .Radio__ripple {
     transform: scale(1);
     opacity: 0;
   }
+}
+
+.Radio__label {
+  margin: 0 8px;
 }
