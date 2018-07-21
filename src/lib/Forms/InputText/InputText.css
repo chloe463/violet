@@ -11,7 +11,7 @@
   border: none;
   background-color: transparent;
   width: 100%;
-  font-size: 14pt;
+  font-size: inherit;
 }
 
 .InputText__placeholder {
@@ -46,7 +46,7 @@ input[type="text"].InputText__form:focus + .InputText__placeholder {
   display: block;
   height: 1px;
   width: 100%;
-  background-color: var(--light-gray);
+  background-color: var(--gray);
 }
 
 .InputText__underline--focus {
