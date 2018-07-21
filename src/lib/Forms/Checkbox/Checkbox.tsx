@@ -70,15 +70,15 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
           value={this.props.value}
           onChange={this.onClick}
         />
+        <span className="Checkbox__ripple" />
         <span className={cssClasses(this.state.squareClasses)}>
-          <span className="Checkbox__ripple" />
           <svg className="Checkbox-checkmark"
             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path className="Checkbox-checkmark-path"
               d="M 22 5 L 9.508 19 L 2 11.78" style={{ "fill": "none" }} />
           </svg>
         </span>
-        <span>{this.props.label}</span>
+        <span className="Checkbox__label">{this.props.label}</span>
       </label>
     );
   }
