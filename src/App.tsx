@@ -2,6 +2,7 @@ import * as React from 'react';
 import './App.css';
 
 import Checkbox from './lib/Forms/Checkbox/Checkbox';
+import DatePicker from './lib/Forms/DatePicker/DatePicker';
 import InputText from './lib/Forms/InputText/InputText';
 import Radio from './lib/Forms/Radio/Radio';
 import Option from './lib/Forms/Select/Option';
@@ -13,6 +14,7 @@ interface IAppState {
   radio: number | string;
   checkbox: any;
   select: any;
+  date: Date;
 }
 
 class App extends React.Component<{}, IAppState> {
@@ -23,12 +25,14 @@ class App extends React.Component<{}, IAppState> {
       name: '',
       radio: '',
       text: '',
-      select: null
+      select: null,
+      date: new Date()
     };
     this.onInputTextChange = this.onInputTextChange.bind(this);
     this.onRadioChange     = this.onRadioChange.bind(this);
     this.onCheckboxChange  = this.onCheckboxChange.bind(this);
     this.onSelectChange    = this.onSelectChange.bind(this);
+    this.onDatePickerChange = this.onDatePickerChange.bind(this);
   }
 
   public onInputTextChange(event: any) {
@@ -50,6 +54,11 @@ class App extends React.Component<{}, IAppState> {
     this.setState({ select: event.value });
   }
 
+  public onDatePickerChange(event: any) {
+    console.log(event);
+    this.setState({ date: event });
+  }
+
   public render() {
     return (
       <div className="App">
@@ -61,19 +70,16 @@ class App extends React.Component<{}, IAppState> {
               value={this.state.text}
               onChange={this.onInputTextChange}/>
           </div>
-          <hr />
           <div className="Form__element">
             <Radio name="radio" value="val1" label="radio1" onChange={this.onRadioChange} defaultChecked={this.state.radio==='val1'}/>
             <Radio name="radio" value="val2" label="radio2" onChange={this.onRadioChange} defaultChecked={this.state.radio==='val2'}/>
             <Radio name="radio" value="val3" label="radio3" onChange={this.onRadioChange} defaultChecked={this.state.radio==='val3'}/>
           </div>
-          <hr />
           <div className="Form__element">
             <Checkbox name="checkbox" value="val1" label="checkbox1" onChange={this.onCheckboxChange} defaultChecked={this.state.checkbox.val1===true}/>
             <Checkbox name="checkbox" value="val2" label="checkbox2" onChange={this.onCheckboxChange} defaultChecked={this.state.checkbox.val2===true}/>
             <Checkbox name="checkbox" value="val3" label="checkbox3" onChange={this.onCheckboxChange} defaultChecked={this.state.checkbox.val3===true}/>
           </div>
-          <hr />
           <div className="Form__element">
             <Select label="select" value={this.state.select} onChange={this.onSelectChange}>
               <Option label="option1" value="val1" />
@@ -81,6 +87,9 @@ class App extends React.Component<{}, IAppState> {
               <Option label="option3" value="val3" />
               <Option label="option4" value="val4" />
             </Select>
+          </div>
+          <div className="Form__element">
+            <DatePicker value={this.state.date} onChange={this.onDatePickerChange}/>
           </div>
         </form>
       </div>
