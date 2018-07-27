@@ -23,7 +23,7 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
         'Checkbox__square--checked': props.defaultChecked
       }
     }
-    this.onClick = this.onClick.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -52,7 +52,7 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
     }
   }
 
-  onClick(event) {
+  onChange(event) {
     if (this.props.onChange) {
       this.props.onChange(event);
     }
@@ -65,7 +65,7 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
           name={this.props.name}
           checked={this.props.defaultChecked}
           value={this.props.value}
-          onChange={this.onClick}
+          onChange={this.onChange}
         />
         <span className="Checkbox__ripple" />
         <span className={cssClasses(this.state.squareClasses)}>
