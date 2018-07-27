@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { cssClasses } from '../../internals';
 
 import './Checkbox.css';
 
@@ -10,46 +9,11 @@ export interface ICheckboxProps {
   value: any;
   onChange: (event) => void;
 };
-export interface ICheckboxState {
-  squareClasses: {[className: string]: boolean};
-};
 
-export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
+export default class Checkbox extends React.Component<ICheckboxProps> {
   constructor(props: ICheckboxProps) {
     super(props);
-    this.state = {
-      squareClasses: {
-        'Checkbox__square': true,
-        'Checkbox__square--checked': props.defaultChecked
-      }
-    }
     this.onChange = this.onChange.bind(this);
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.props === nextProps) {
-      return true;
-    }
-    this.handleCssClasses(nextProps);
-    return true;
-  }
-
-  handleCssClasses(nextProps) {
-    if (nextProps.defaultChecked) {
-      this.setState({
-        squareClasses: {
-          'Checkbox__square': true,
-          'Checkbox__square--checked': true
-        },
-      });
-    } else {
-      this.setState({
-        squareClasses: {
-          'Checkbox__square': true,
-          'Checkbox__square--checked': false
-        },
-      });
-    }
   }
 
   onChange(event) {
@@ -68,7 +32,7 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
           onChange={this.onChange}
         />
         <span className="Checkbox__ripple" />
-        <span className={cssClasses(this.state.squareClasses)}>
+        <span className={'Checkbox__square ' + (this.props.defaultChecked ? 'Checkbox__square--checked' : '')}>
           <svg className="Checkbox-checkmark"
             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path className="Checkbox-checkmark-path"
