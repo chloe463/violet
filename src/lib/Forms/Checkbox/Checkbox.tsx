@@ -11,20 +11,17 @@ export interface ICheckboxProps {
   onChange: (event) => void;
 };
 export interface ICheckboxState {
-  squareClasses: any;
+  squareClasses: {[className: string]: boolean};
 };
 
 export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
-  constructor(props) {
+  constructor(props: ICheckboxProps) {
     super(props);
     this.state = {
       squareClasses: {
         'Checkbox__square': true,
-        'Checkbox__square--checked': false
+        'Checkbox__square--checked': props.defaultChecked
       }
-    }
-    if (props.defaultChecked) {
-      this.state.squareClasses['Checkbox__square--checked'] = true;
     }
     this.onClick = this.onClick.bind(this);
   }
@@ -39,19 +36,19 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
 
   handleCssClasses(nextProps) {
     if (nextProps.defaultChecked) {
-      this.setState(Object.assign({}, this.state, {
+      this.setState({
         squareClasses: {
           'Checkbox__square': true,
           'Checkbox__square--checked': true
         },
-      }));
+      });
     } else {
-      this.setState(Object.assign({}, this.state, {
+      this.setState({
         squareClasses: {
           'Checkbox__square': true,
           'Checkbox__square--checked': false
         },
-      }));
+      });
     }
   }
 
