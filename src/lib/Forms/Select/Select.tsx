@@ -5,6 +5,7 @@ import Option from './Option';
 import './Select.css';
 
 export interface ISelectProps {
+  disabled?: boolean;
   label?: string;
   value: any;
   onChange: (event) => void;
@@ -30,10 +31,16 @@ export default class Select extends React.Component<ISelectProps, ISelectState> 
   }
 
   toggleVisibility() {
+    if (this.props.disabled) {
+      return;
+    }
     this.setState({ optionsVisibility: !this.state.optionsVisibility });
   }
 
   openOptions(event) {
+    if (this.props.disabled) {
+      return;
+    }
     this.setState({ optionsVisibility: true });
   }
 
@@ -57,7 +64,7 @@ export default class Select extends React.Component<ISelectProps, ISelectState> 
 
     return (
       <div tabIndex={0}
-        className="Select"
+        className={'Select ' + (this.props.disabled ? 'Select--disabled' : '')}
         onFocus={this.openOptions}
         onBlur={this.hideOptions}>
         <span className={labelClass}>{this.props.label}</span>
