@@ -82,7 +82,12 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
     let weekNumber = 0;
     weeks[weekNumber] = (new Array(7)).fill(null);
     for (let i = 1; i <= 31; ++i) {
-      const day = (new Date(year, month, i)).getDay();
+      const d   = new Date(year, month, i);
+      const day = d.getDay();
+      if (d.getMonth() !== month) {
+        break;
+      }
+
       weeks[weekNumber][day] = i;
       if (day === SATURDAY) {
         weekNumber += 1;
