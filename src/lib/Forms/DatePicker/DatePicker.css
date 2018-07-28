@@ -3,7 +3,6 @@
   position: relative;
   min-width: 180px;
   outline: none;
-  cursor: pointer;
 }
 
 .DatePicker__input {
@@ -11,6 +10,7 @@
   width: 100%;
   line-height: 32px;
   border-bottom: 1px solid var(--gray);
+  cursor: pointer;
 }
 
 .DatePicker__toggle-button {
@@ -172,4 +172,5 @@
 
 .DatePicker--disabled > .DatePicker__input {
   color: var(--gray);
+  cursor: default;
 }
