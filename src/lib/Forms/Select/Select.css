@@ -44,7 +44,7 @@
   transform: translateY(-22px) scale(.8);
 }
 
-.Select_selected-value {
+.Select__selected-value {
   outline: none;
   display: inline-block;
   width: 100%;
@@ -97,7 +97,7 @@
 }
 
 .Select--disabled > .Select__label,
-.Select--disabled > .Select_selected-value {
+.Select--disabled > .Select__selected-value {
   color: var(--gray);
 }
 
