@@ -6,6 +6,7 @@ export interface IRadioProps {
   label: string;
   value: any;
   defaultChecked: boolean;
+  disabled?: boolean;
   onFocus?: (event) => void;
   onBlur?: (event) => void;
   onChange: (event) => void;
@@ -15,7 +16,7 @@ export default class Radio extends React.Component<IRadioProps> {
 
   render() {
     return (
-      <label className="Radio">
+      <label className={'Radio ' + (this.props.disabled ? 'Radio--disabled' : '')}>
         <span className="Radio__circleContainer">
           <input
             type="radio"
@@ -26,6 +27,7 @@ export default class Radio extends React.Component<IRadioProps> {
             onBlur={this.props.onBlur}
             onChange={this.props.onChange}
             checked={this.props.defaultChecked}
+            disabled={this.props.disabled}
           />
           <span className="Radio__outerCircle" />
           <span className="Radio__innerCircle" />

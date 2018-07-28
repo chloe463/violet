@@ -89,3 +89,21 @@ input[type="radio"].Radio__inputRadio:checked ~ .Radio__ripple {
 .Radio__label {
   margin: 0 8px;
 }
+
+.Radio--disabled {
+  cursor: default;
+}
+
+input[type="radio"].Radio__inputRadio:disabled+ .Radio__outerCircle {
+  border-color: var(--light-gray);
+}
+
+input[type="radio"].Radio__inputRadio:checked:disabled ~ .Radio__innerCircle {
+  border-color: var(--white);
+  background-color: var(--gray);
+  transform: scale(.9);
+}
+
+.Radio--disabled > .Radio__label {
+  color: var(--gray);
+}
