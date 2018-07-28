@@ -2,6 +2,7 @@
   position: relative;
   outline: none;
   border-top: 12px solid transparent;
+  cursor: pointer;
 }
 
 .Select::after {
@@ -29,7 +30,7 @@
   transform-origin: 0 0;
 }
 
-.Select:focus > .Select__label {
+.Select:focus:not(.Select--disabled) > .Select__label {
   position: absolute;
   pointer-events: none;
   color: var(--brand);
@@ -53,7 +54,7 @@
   border: none;
   border-bottom: 1px solid var(--gray);
   border-radius: 0;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .Options {
@@ -89,3 +90,14 @@
   transform: none;
   pointer-events: initial;
 }
+
+
+.Select--disabled {
+  cursor: default;
+}
+
+.Select--disabled > .Select__label,
+.Select--disabled > .Select_selected-value {
+  color: var(--gray);
+}
+
