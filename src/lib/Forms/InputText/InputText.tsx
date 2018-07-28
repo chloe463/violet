@@ -8,6 +8,7 @@ export interface IInputTextProps {
   onFocus?: (event: any) => void;
   onBlur?: (event: any) => void;
   onChange: (event: any) => void;
+  disabled?: boolean;
 }
 
 export default class InputText extends React.Component<IInputTextProps> {
@@ -40,6 +41,7 @@ export default class InputText extends React.Component<IInputTextProps> {
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           placeholder="&nbsp;"
+          disabled={this.props.disabled}
         />
         <span className="InputText__placeholder">{this.props.label}</span>
         <div className="InputText__underline" />
