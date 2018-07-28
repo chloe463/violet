@@ -4,6 +4,7 @@ import { cssClasses, dateFormat } from '../../internals';
 import './DatePicker.css';
 
 export interface IDatePickerProps {
+  disabled?: boolean;
   value: Date;
   onChange: (event) => void;
 }
@@ -30,6 +31,9 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
   }
 
   toggleCalendarVisibility(event) {
+    if (this.props.disabled) {
+      return;
+    }
     this.setState((prevState: IDatePickerState) => ({
       pickerVisibility: !prevState.pickerVisibility
     }))
@@ -160,7 +164,7 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
 
     return (
       // <div tabIndex={0} className="DatePicker" onBlur={this.toggleCalendarVisibility}>
-      <div tabIndex={0} className="DatePicker">
+      <div tabIndex={0} className={'DatePicker ' + (this.props.disabled ? 'DatePicker--disabled' : '')}>
         {/* input form */}
         <div className="DatePicker__input" onClick={this.toggleCalendarVisibility}>
           {dateFormat(this.props.value, 'yyyy/MM/dd')}

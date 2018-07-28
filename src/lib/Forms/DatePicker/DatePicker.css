@@ -3,13 +3,13 @@
   position: relative;
   min-width: 180px;
   outline: none;
+  cursor: pointer;
 }
 
 .DatePicker__input {
   position: relative;
   width: 100%;
   line-height: 32px;
-  cursor: pointer;
   border-bottom: 1px solid var(--gray);
 }
 
@@ -163,4 +163,13 @@
 
 .DatePicker__button--ng {
 
+}
+
+
+.DatePicker--disabled {
+  cursor: default;
+}
+
+.DatePicker--disabled > .DatePicker__input {
+  color: var(--gray);
 }
