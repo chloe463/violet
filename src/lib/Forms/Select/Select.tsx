@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { ReactElement } from 'react';
-import { cssClasses } from '../../internals';
 import Option from './Option';
 import './Select.css';
 
@@ -53,14 +52,10 @@ export default class Select extends React.Component<ISelectProps, ISelectState> 
       .filter((child: any) => child.props.value === this.props.value);
     const selectedOption: any = selectedList.length ? selectedList[0] : { props: { label: '' }};
 
-    const optionsClass = cssClasses({
-      'Options': true,
-      'Options--visible': this.state.optionsVisibility
-    });
-    const labelClass = cssClasses({
-      'Select__label': true,
-      'Select__label--selected': selectedOption.props.label !== ''
-    });
+    const optionsClass = 'Options ' +
+      (this.state.optionsVisibility ? 'Options--visible' : '');
+    const labelClass   = 'Select__label ' +
+      (selectedOption.props.label !== '' ? 'Select__label--selected' : '');
 
     return (
       <div tabIndex={0}
