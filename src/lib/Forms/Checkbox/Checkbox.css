@@ -6,6 +6,10 @@
   cursor: pointer;
 }
 
+.Checkbox--disabled {
+  cursor: default;
+}
+
 .Checkbox > input[type="checkbox"] {
   opacity: 0;
   display: inline-block;
@@ -102,4 +106,27 @@
 
 .Checkbox__label {
   margin: 0 8px;
+}
+
+
+.Checkbox > input[type="checkbox"]:disabled + .Checkbox__ripple {
+  display: none;
+}
+
+.Checkbox > input[type="checkbox"]:disabled ~ .Checkbox__square {
+  border: 2px solid var(--light-gray);
+}
+
+.Checkbox > input[type="checkbox"]:checked:disabled ~ .Checkbox__square {
+  background-color: var(--light-gray);
+  border-color: var(--light-gray);
+}
+
+.Checkbox > input[type="checkbox"]:checked:disabled ~ .Checkbox__square
+  > .Checkbox-checkmark > .Checkbox-checkmark-path {
+    stroke: var(--gray);
+}
+
+.Checkbox > input[type="checkbox"]:disabled ~ .Checkbox__label {
+  color: var(--gray);
 }

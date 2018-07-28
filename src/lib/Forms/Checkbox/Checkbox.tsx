@@ -3,6 +3,7 @@ import * as React from 'react';
 import './Checkbox.css';
 
 export interface ICheckboxProps {
+  disabled?: boolean;
   defaultChecked: boolean;
   name: string;
   label: string;
@@ -24,12 +25,13 @@ export default class Checkbox extends React.Component<ICheckboxProps> {
 
   render() {
     return (
-      <label className="Checkbox">
+      <label className={'Checkbox ' + (this.props.disabled ? 'Checkbox--disabled' : '')}>
         <input type="checkbox"
           name={this.props.name}
           checked={this.props.defaultChecked}
           value={this.props.value}
           onChange={this.onChange}
+          disabled={this.props.disabled}
         />
         <span className="Checkbox__ripple" />
         <span className={'Checkbox__square ' + (this.props.defaultChecked ? 'Checkbox__square--checked' : '')}>
