@@ -68,7 +68,7 @@ export default class Select extends React.Component<ISelectProps, ISelectState> 
         onFocus={this.openOptions}
         onBlur={this.hideOptions}>
         <span className={labelClass}>{this.props.label}</span>
-        <div className="Select_selected-value"
+        <div className="Select__selected-value"
           onClick={this.openOptions}>{selectedOption.props.label}</div>
         <ul className={optionsClass}>
         {
