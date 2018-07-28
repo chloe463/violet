@@ -9,8 +9,8 @@
   position: relative;
   width: 100%;
   line-height: 32px;
-  cursor: pointer;
   border-bottom: 1px solid var(--gray);
+  cursor: pointer;
 }
 
 .DatePicker__toggle-button {
@@ -163,4 +163,14 @@
 
 .DatePicker__button--ng {
 
+}
+
+
+.DatePicker--disabled {
+  cursor: default;
+}
+
+.DatePicker--disabled > .DatePicker__input {
+  color: var(--gray);
+  cursor: default;
 }

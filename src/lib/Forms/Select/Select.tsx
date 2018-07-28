@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { ReactElement } from 'react';
-import { cssClasses } from '../../internals';
 import Option from './Option';
 import './Select.css';
 
 export interface ISelectProps {
+  disabled?: boolean;
   label?: string;
   value: any;
   onChange: (event) => void;
@@ -30,10 +30,16 @@ export default class Select extends React.Component<ISelectProps, ISelectState> 
   }
 
   toggleVisibility() {
+    if (this.props.disabled) {
+      return;
+    }
     this.setState({ optionsVisibility: !this.state.optionsVisibility });
   }
 
   openOptions(event) {
+    if (this.props.disabled) {
+      return;
+    }
     this.setState({ optionsVisibility: true });
   }
 
@@ -46,22 +52,18 @@ export default class Select extends React.Component<ISelectProps, ISelectState> 
       .filter((child: any) => child.props.value === this.props.value);
     const selectedOption: any = selectedList.length ? selectedList[0] : { props: { label: '' }};
 
-    const optionsClass = cssClasses({
-      'Options': true,
-      'Options--visible': this.state.optionsVisibility
-    });
-    const labelClass = cssClasses({
-      'Select__label': true,
-      'Select__label--selected': selectedOption.props.label !== ''
-    });
+    const optionsClass = 'Options ' +
+      (this.state.optionsVisibility ? 'Options--visible' : '');
+    const labelClass   = 'Select__label ' +
+      (selectedOption.props.label !== '' ? 'Select__label--selected' : '');
 
     return (
       <div tabIndex={0}
-        className="Select"
+        className={'Select ' + (this.props.disabled ? 'Select--disabled' : '')}
         onFocus={this.openOptions}
         onBlur={this.hideOptions}>
         <span className={labelClass}>{this.props.label}</span>
-        <div className="Select_selected-value"
+        <div className="Select__selected-value"
           onClick={this.openOptions}>{selectedOption.props.label}</div>
         <ul className={optionsClass}>
         {

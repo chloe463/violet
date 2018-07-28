@@ -68,3 +68,10 @@ input[type="text"].InputText__form:focus ~ .InputText__underline--focus {
   opacity: 1;
   transform: scale(1);
 }
+
+input[type="text"].InputText__form:disabled {
+  color: var(--gray);
+}
+input[type="text"].InputText__form:disabled ~ .InputText__underline {
+  background-color: var(--light-gray);
+}

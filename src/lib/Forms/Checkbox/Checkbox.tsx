@@ -1,61 +1,23 @@
 import * as React from 'react';
-import { cssClasses } from '../../internals';
 
 import './Checkbox.css';
 
 export interface ICheckboxProps {
+  disabled?: boolean;
   defaultChecked: boolean;
   name: string;
   label: string;
   value: any;
   onChange: (event) => void;
 };
-export interface ICheckboxState {
-  squareClasses: any;
-};
 
-export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
-  constructor(props) {
+export default class Checkbox extends React.Component<ICheckboxProps> {
+  constructor(props: ICheckboxProps) {
     super(props);
-    this.state = {
-      squareClasses: {
-        'Checkbox__square': true,
-        'Checkbox__square--checked': false
-      }
-    }
-    if (props.defaultChecked) {
-      this.state.squareClasses['Checkbox__square--checked'] = true;
-    }
-    this.onClick = this.onClick.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.props === nextProps) {
-      return true;
-    }
-    this.handleCssClasses(nextProps);
-    return true;
-  }
-
-  handleCssClasses(nextProps) {
-    if (nextProps.defaultChecked) {
-      this.setState(Object.assign({}, this.state, {
-        squareClasses: {
-          'Checkbox__square': true,
-          'Checkbox__square--checked': true
-        },
-      }));
-    } else {
-      this.setState(Object.assign({}, this.state, {
-        squareClasses: {
-          'Checkbox__square': true,
-          'Checkbox__square--checked': false
-        },
-      }));
-    }
-  }
-
-  onClick(event) {
+  onChange(event) {
     if (this.props.onChange) {
       this.props.onChange(event);
     }
@@ -63,15 +25,16 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
 
   render() {
     return (
-      <label className="Checkbox">
+      <label className={'Checkbox ' + (this.props.disabled ? 'Checkbox--disabled' : '')}>
         <input type="checkbox"
           name={this.props.name}
           checked={this.props.defaultChecked}
           value={this.props.value}
-          onChange={this.onClick}
+          onChange={this.onChange}
+          disabled={this.props.disabled}
         />
         <span className="Checkbox__ripple" />
-        <span className={cssClasses(this.state.squareClasses)}>
+        <span className={'Checkbox__square ' + (this.props.defaultChecked ? 'Checkbox__square--checked' : '')}>
           <svg className="Checkbox-checkmark"
             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path className="Checkbox-checkmark-path"
