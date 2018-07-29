@@ -1,6 +1,9 @@
 import * as React from 'react';
 import './App.css';
 
+import Button from './lib/Buttons/Button';
+import RaisedButton from './lib/Buttons/RaisedButton';
+import SkeletonButton from './lib/Buttons/SkeletonButton';
 import Checkbox from './lib/Forms/Checkbox/Checkbox';
 import DatePicker from './lib/Forms/DatePicker/DatePicker';
 import InputText from './lib/Forms/InputText/InputText';
@@ -33,6 +36,7 @@ class App extends React.Component<{}, IAppState> {
     this.onCheckboxChange  = this.onCheckboxChange.bind(this);
     this.onSelectChange    = this.onSelectChange.bind(this);
     this.onDatePickerChange = this.onDatePickerChange.bind(this);
+    this.onButtonClick      = this.onButtonClick.bind(this);
   }
 
   public onInputTextChange(event: any) {
@@ -57,6 +61,10 @@ class App extends React.Component<{}, IAppState> {
   public onDatePickerChange(event: any) {
     console.log(event);
     this.setState({ date: event });
+  }
+
+  public onButtonClick(event: any) {
+    console.log(event);
   }
 
   public render() {
@@ -90,6 +98,26 @@ class App extends React.Component<{}, IAppState> {
           </div>
           <div className="Form__element">
             <DatePicker value={this.state.date} onChange={this.onDatePickerChange}/>
+          </div>
+          <div className="Form__element">
+            <Button type="button" onClick={this.onButtonClick}>Basic</Button>
+            <Button color="primary" type="button" onClick={this.onButtonClick}>Primary</Button>
+            <Button color="accent" type="button" onClick={this.onButtonClick}>Accent</Button>
+            <Button disabled={true} color="accent" type="button" onClick={this.onButtonClick}>Disabled</Button>
+          </div>
+
+          <div className="Form__element">
+            <RaisedButton type="button" onClick={this.onButtonClick}>Raised</RaisedButton>
+            <RaisedButton color="primary" type="button" onClick={this.onButtonClick}>Primary</RaisedButton>
+            <RaisedButton color="accent" type="button" onClick={this.onButtonClick}>Accent</RaisedButton>
+            <RaisedButton disabled={true} color="accent" type="button" onClick={this.onButtonClick}>Disabled</RaisedButton>
+          </div>
+
+          <div className="Form__element">
+            <SkeletonButton type="button" onClick={this.onButtonClick}>Skeleton</SkeletonButton>
+            <SkeletonButton color="primary" type="button" onClick={this.onButtonClick}>Primary</SkeletonButton>
+            <SkeletonButton color="accent" type="button" onClick={this.onButtonClick}>Accent</SkeletonButton>
+            <SkeletonButton disabled={true} color="accent" type="button" onClick={this.onButtonClick}>Disabled</SkeletonButton>
           </div>
         </form>
       </div>
