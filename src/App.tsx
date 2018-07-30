@@ -1,9 +1,7 @@
 import * as React from 'react';
 import './App.css';
 
-import Button from './lib/Buttons/Button';
-import RaisedButton from './lib/Buttons/RaisedButton';
-import SkeletonButton from './lib/Buttons/SkeletonButton';
+import { Button, RaisedButton, SkeletonButton } from './lib/Buttons';
 import Checkbox from './lib/Forms/Checkbox/Checkbox';
 import DatePicker from './lib/Forms/DatePicker/DatePicker';
 import InputText from './lib/Forms/InputText/InputText';
