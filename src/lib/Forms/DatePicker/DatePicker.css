@@ -129,6 +129,7 @@
 .DatePicker__buttons {
   display: flex;
   justify-content: flex-end;
+  padding: 5px;
 }
 
 .DatePicker__button {

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Button } from '../../Buttons';
 import { dateFormat } from '../../internals';
 
 import './DatePicker.css';
@@ -135,12 +136,8 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
 
           {/* buttons */}
           <div className="DatePicker__buttons">
-            <button type="button"
-              className="DatePicker__button DatePicker__button--ng"
-              onClick={this.onNgClick}>NG</button>
-            <button type="button"
-              className="DatePicker__button DatePicker__button--ok"
-              onClick={this.onOkClick}>OK</button>
+            <Button onClick={this.onNgClick}>Cancel</Button>
+            <Button onClick={this.onOkClick}>OK</Button>
           </div>
         </div>
     );

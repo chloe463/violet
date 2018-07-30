@@ -2,6 +2,12 @@
   --brand: #66327c;
   --accent: #e03c8a;
 
+  --brand-hover: #79488e;
+  --accent-hover: #e65a9d;
+
+  --brand-hover--light: #66327c1a;
+  --accent-hover--light: #e65a9d1a;
+
   --gray: #787878;
   --light-gray: #eaeaea;
   --black: #1c1c1c;
