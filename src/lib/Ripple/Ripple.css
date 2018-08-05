@@ -1,0 +1,20 @@
+.Ripple {
+  position: absolute;
+  display: inline-block;
+  background-color: var(--white);
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple-effect 800ms ease-out;
+  pointer-events: none;
+}
+
+@keyframes ripple-effect {
+  from {
+    transform: scale(0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}

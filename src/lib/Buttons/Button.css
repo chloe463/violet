@@ -2,6 +2,7 @@
  * Basic buttons
  */
 .Button {
+  position: relative;
   outline: none;
   padding: 0 16px;
   min-height: 36px;
@@ -14,6 +15,7 @@
   border-radius: 2px;
   letter-spacing: 0.05em;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .Button:hover {
@@ -50,6 +52,7 @@
  * Raised buttons
  */
 .RaisedButton {
+  position: relative;
   outline: none;
   padding: 0 16px;
   min-height: 36px;
@@ -67,6 +70,7 @@
   transition-property: box-shadow;
   transition-duration: .2s;
   transition-timing-function: ease-out;
+  overflow: hidden;
 }
 
 .RaisedButton--disabled {
@@ -95,6 +99,7 @@
  * Skeleton Buttons
  */
 .SkeletonButton {
+  position: relative;
   outline: none;
   padding: 0 16px;
   min-height: 36px;
@@ -107,6 +112,7 @@
   border-radius: 2px;
   letter-spacing: 0.05em;
   cursor: pointer;
+  overflow: hidden;
 
   transition-property: background-color;
   transition-duration: 150ms;
