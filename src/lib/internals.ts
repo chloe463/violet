@@ -30,3 +30,25 @@ export const dateFormat = (date: Date, format: string): string => {
     )
     .replace('aaa', date.getHours() < 12 ? 'AM' : 'PM');
 };
+
+export const timer = (milliseconds): Promise<void> => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, milliseconds);
+  });
+};
+
+export const calculateRipplePosition = (event) => {
+  const nativeEvent = event.nativeEvent;
+
+  const target = nativeEvent.target;
+  const radius = Math.sqrt((target.clientWidth ** 2) + (target.clientHeight ** 2)) * 2;
+
+  // Calcurate coodinates
+  const rect = target.getBoundingClientRect();
+  const top  = nativeEvent.pageY - rect.top - window.pageYOffset - (radius / 2);
+  const left = nativeEvent.pageX - rect.left - window.pageXOffset - (radius / 2);
+
+  return { top, left, radius };
+};
