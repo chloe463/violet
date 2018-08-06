@@ -4,7 +4,7 @@
   background-color: var(--white);
   border-radius: 50%;
   transform: scale(0);
-  animation: ripple-effect 800ms ease-out;
+  animation: ripple-effect 1300ms ease-out;
   pointer-events: none;
 }
 

@@ -20,6 +20,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState> 
     super(props);
     this.state =  { ripples: [] };
     this.onClick = this.onClick.bind(this);
+    this.enableRippleEffect = this.enableRippleEffect.bind(this);
   }
 
   getClassNames() {
@@ -44,7 +45,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState> 
     });
 
     // Remove ripple component after 800ms.
-    timer(800).then(() => {
+    timer(1300).then(() => {
       this.setState((prevState: IButtonState) => {
         return { ripples: prevState.ripples.filter(ripple => ripple.key !== key) };
       });
@@ -52,7 +53,6 @@ export default class Button extends React.Component<IButtonProps, IButtonState> 
   }
 
   onClick(event) {
-    this.enableRippleEffect(event);
     this.props.onClick(event);
   }
 
@@ -61,6 +61,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState> 
       <button type={this.props.type || 'button'}
         className={this.getClassNames()}
         onClick={this.onClick}
+        onMouseDown={this.enableRippleEffect}
         disabled={this.props.disabled}>
         {this.props.children}
         {this.state.ripples.map(ripple => {
