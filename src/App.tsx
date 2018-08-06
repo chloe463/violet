@@ -8,6 +8,7 @@ import InputText from './lib/Forms/InputText/InputText';
 import Radio from './lib/Forms/Radio/Radio';
 import Option from './lib/Forms/Select/Option';
 import Select from './lib/Forms/Select/Select';
+import { Tab, Tabs } from './lib/Tabs';
 
 interface IAppState {
   name: string;
@@ -16,6 +17,8 @@ interface IAppState {
   checkbox: any;
   select: any;
   date: Date;
+
+  selectedTabIndex: number;
 }
 
 class App extends React.Component<{}, IAppState> {
@@ -27,7 +30,9 @@ class App extends React.Component<{}, IAppState> {
       radio: '',
       text: '',
       select: null,
-      date: new Date()
+      date: new Date(),
+
+      selectedTabIndex: 0
     };
     this.onInputTextChange = this.onInputTextChange.bind(this);
     this.onRadioChange     = this.onRadioChange.bind(this);
@@ -35,6 +40,7 @@ class App extends React.Component<{}, IAppState> {
     this.onSelectChange    = this.onSelectChange.bind(this);
     this.onDatePickerChange = this.onDatePickerChange.bind(this);
     this.onButtonClick      = this.onButtonClick.bind(this);
+    this.onTabTitleClick    = this.onTabTitleClick.bind(this);
   }
 
   public onInputTextChange(event: any) {
@@ -65,10 +71,34 @@ class App extends React.Component<{}, IAppState> {
     console.log(event);
   }
 
+  public onTabTitleClick(tabIndex: any) {
+    this.setState({ selectedTabIndex: tabIndex });
+  }
+
   public render() {
     return (
       <div className="App">
         <h2 style={{"textAlign": 'center'}}>Violet</h2>
+        <Tabs selectedIndex={this.state.selectedTabIndex} onTabTitleClick={this.onTabTitleClick}>
+          <Tab title={'Tab1'}>
+            <p>
+              Content1
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae cupiditate quis commodi, ratione accusantium ipsam consectetur sit aliquid corporis at? Ipsa neque praesentium aut perferendis porro error placeat mollitia quam.
+            </p>
+          </Tab>
+          <Tab title={'Tab2'}>
+            <p>
+              Content2
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio illum dolorem natus eveniet necessitatibus, dignissimos corporis doloremque nihil qui nam beatae laboriosam! Quod magni cumque odit aspernatur sapiente qui dolorem!
+            </p>
+          </Tab>
+          <Tab title={'Tab3'}>
+            <p>
+              Content3
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae libero ut at unde blanditiis reprehenderit dicta, quod commodi iusto, pariatur officiis nesciunt! Quae sunt magni nostrum nemo laborum quis rem.
+            </p>
+          </Tab>
+        </Tabs>
         <form className="Form">
           <div className="Form__element">
             <InputText
