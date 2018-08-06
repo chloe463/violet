@@ -43,10 +43,7 @@ export const calculateRipplePosition = (event) => {
   const nativeEvent = event.nativeEvent;
 
   const target = nativeEvent.target;
-  let radius = Math.max(target.clientWidth, target.clientHeight);
-  if (target.clientHeight * 10 < target.clientWidth) {
-    radius = target.clientWidth / 1.8;
-  }
+  const radius = Math.sqrt((target.clientWidth ** 2) + (target.clientHeight ** 2)) * 2;
 
   // Calcurate coodinates
   const rect = target.getBoundingClientRect();
