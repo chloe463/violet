@@ -2,6 +2,7 @@ import * as React from 'react';
 import './App.css';
 
 import { Button, RaisedButton, SkeletonButton } from './lib/Buttons';
+import AutoComplete from './lib/Forms/AutoComplete/AutoComplete';
 import Checkbox from './lib/Forms/Checkbox/Checkbox';
 import DatePicker from './lib/Forms/DatePicker/DatePicker';
 import InputText from './lib/Forms/InputText/InputText';
@@ -13,6 +14,7 @@ import { Tab, Tabs } from './lib/Tabs';
 interface IAppState {
   name: string;
   text: number | string;
+  autocomplete: string;
   radio: number | string;
   checkbox: any;
   select: any;
@@ -20,6 +22,14 @@ interface IAppState {
 
   selectedTabIndex: number;
 }
+
+const suggestions = [
+  { label: 'value1', value: 1 },
+  { label: 'value2', value: 2 },
+  { label: 'value3', value: 3 },
+  { label: 'value4', value: 4 },
+  { label: 'value5', value: 5 },
+];
 
 class App extends React.Component<{}, IAppState> {
   constructor(props: any) {
@@ -29,12 +39,14 @@ class App extends React.Component<{}, IAppState> {
       name: '',
       radio: '',
       text: '',
+      autocomplete: '',
       select: null,
       date: new Date(),
 
       selectedTabIndex: 0
     };
     this.onInputTextChange = this.onInputTextChange.bind(this);
+    this.onAutoCompleteChange = this.onAutoCompleteChange .bind(this);
     this.onRadioChange     = this.onRadioChange.bind(this);
     this.onCheckboxChange  = this.onCheckboxChange.bind(this);
     this.onSelectChange    = this.onSelectChange.bind(this);
@@ -45,6 +57,11 @@ class App extends React.Component<{}, IAppState> {
 
   public onInputTextChange(event: any) {
     this.setState({ text: event.target.value });
+  }
+
+  public onAutoCompleteChange(event: any) {
+    console.log(event);
+    this.setState({ autocomplete: event.label });
   }
 
   public onRadioChange(event: any) {
@@ -105,6 +122,13 @@ class App extends React.Component<{}, IAppState> {
               label="text"
               value={this.state.text}
               onChange={this.onInputTextChange}/>
+          </div>
+          <div className="Form__element">
+            <AutoComplete
+              value={this.state.autocomplete}
+              label="AutoComplete"
+              suggestions={suggestions}
+              onChange={this.onAutoCompleteChange}/>
           </div>
           <div className="Form__element">
             <Radio name="radio" value="val1" label="radio1" onChange={this.onRadioChange} defaultChecked={this.state.radio==='val1'}/>
