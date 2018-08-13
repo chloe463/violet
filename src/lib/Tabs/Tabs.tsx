@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Ripple from '../Ripple/Ripple';
 import Tab from './Tab';
 // import { ITabProps } from './Tab';
 
@@ -27,6 +28,7 @@ export default class Tabs extends React.Component<ITabsProps> {
             const cssClasses = 'Tabs__title ' + (this.props.selectedIndex === index ? 'Tabs__title--active' : '');
             return (
               <li className={cssClasses} key={index} onClick={this.onTabTitleClick.bind(this, index)}>
+                <Ripple color="var(--brand-hover--light)"/>
                 {child.props.title}
               </li>
             );
