@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { calculateRipplePosition, timer } from '../internals';
 import Ripple from '../Ripple/Ripple'
 
 import './Button.css';
@@ -20,7 +19,6 @@ export default class Button extends React.Component<IButtonProps, IButtonState> 
     super(props);
     this.state =  { ripples: [] };
     this.onClick = this.onClick.bind(this);
-    this.enableRippleEffect = this.enableRippleEffect.bind(this);
   }
 
   getClassNames() {
@@ -28,28 +26,6 @@ export default class Button extends React.Component<IButtonProps, IButtonState> 
       this.baseClassName,
       this.baseClassName + '--' + (this.props.disabled ? 'disabled' : this.props.color)
     ].join(' ');
-  }
-
-  enableRippleEffect(event) {
-    const key = (new Date()).getMilliseconds() + Math.random();
-    const { top, left, radius } = calculateRipplePosition(event);
-
-    // Add ripple component
-    this.setState((prevState: IButtonState) => {
-      return {
-        ripples: [
-          ...prevState.ripples,
-          { key, top, left, radius }
-        ]
-      };
-    });
-
-    // Remove ripple component after 800ms.
-    timer(1300).then(() => {
-      this.setState((prevState: IButtonState) => {
-        return { ripples: prevState.ripples.filter(ripple => ripple.key !== key) };
-      });
-    });
   }
 
   onClick(event) {
@@ -61,12 +37,10 @@ export default class Button extends React.Component<IButtonProps, IButtonState> 
       <button type={this.props.type || 'button'}
         className={this.getClassNames()}
         onClick={this.onClick}
-        onMouseDown={this.enableRippleEffect}
+        // onMouseDown={this.enableRippleEffect}
         disabled={this.props.disabled}>
         {this.props.children}
-        {this.state.ripples.map(ripple => {
-          return <Ripple key={ripple.key} top={ripple.top} left={ripple.left} radius={ripple.radius}/>;
-        })}
+        {!this.props.disabled && <Ripple />}
       </button>
     );
   }
