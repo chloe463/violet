@@ -11,7 +11,7 @@
   border: none;
   background-color: transparent;
   width: 100%;
-  font-size: inherit;
+  font-size: 1.0rem;
 }
 
 .InputText__placeholder {
