@@ -130,3 +130,20 @@
 .Checkbox > input[type="checkbox"]:disabled ~ .Checkbox__label {
   color: var(--gray);
 }
+
+.Checkbox > input[type="checkbox"]:indeterminate ~ .Checkbox__square {
+  background-color: var(--brand);
+  border-color: var(--brand);
+}
+
+.Checkbox > input[type="checkbox"]:indeterminate ~ .Checkbox__square
+  > .Checkbox-checkmark > .Checkbox-checkmark-path {
+    stroke: var(--brand);
+}
+
+.Checkbox > input[type="checkbox"]:indeterminate ~ .Checkbox__square
+  > .Checkbox-checkmark > .Checkbox-indeterminate-path {
+    stroke: var(--white);
+    stroke-width: 2.7px;
+}
+
