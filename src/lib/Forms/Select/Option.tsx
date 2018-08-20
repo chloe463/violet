@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { cssClasses } from '../../internals';
+import Ripple from '../../Ripple/Ripple';
 import './Option.css';
 
 export interface IOptionProps {
@@ -26,6 +27,11 @@ export default class Option extends React.Component<IOptionProps> {
       'Option': true,
       'Option--selected': this.props.selected
     });
-    return <li className={className} onClick={this.onClick}>{this.props.label}</li>;
+    return (
+      <li className={className} onClick={this.onClick}>
+        <Ripple />
+        {this.props.label}
+      </li>
+    );
   }
 }
