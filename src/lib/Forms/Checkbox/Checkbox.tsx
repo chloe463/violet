@@ -7,7 +7,6 @@ export interface ICheckboxProps {
   defaultChecked: boolean;
   indeterminate?: boolean;
   name: string;
-  label: string;
   value: any;
   onChange: (event) => void;
 };
@@ -54,7 +53,7 @@ export default class Checkbox extends React.Component<ICheckboxProps> {
               d="M 2 12 L 8.853 12 L 22 12"/>
           </svg>
         </span>
-        <span className="Checkbox__label">{this.props.label}</span>
+        <span className="Checkbox__label">{this.props.children}</span>
       </label>
     );
   }
