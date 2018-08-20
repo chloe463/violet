@@ -20,7 +20,6 @@ export default class Checkbox extends React.Component<ICheckboxProps> {
   }
 
   componentDidMount() {
-    console.log(this.checkboxRef);
     if (this.props.indeterminate) {
       this.checkboxRef.current.indeterminate = true;
     }
