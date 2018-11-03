@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { action } from '@storybook/addon-actions';
+import { withKnobs, boolean } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 
 import '../src/index.css';
@@ -9,6 +10,7 @@ import './index.storybook.css';
 import Checkbox from '../src/lib/Forms/Checkbox/Checkbox';
 
 storiesOf('Checkbox', module)
+  .addDecorator(withKnobs)
   .add('With empty value and no label', () =>
     <div className="container">
       <Checkbox name="test" value={true} onChange={action('onChange!')} defaultChecked />
@@ -23,7 +25,11 @@ storiesOf('Checkbox', module)
   )
   .add('With indeterminate', () =>
     <div className="container">
-      <Checkbox name="test" value={true} onChange={action('onChange!')} defaultChecked indeterminate>
+      <Checkbox name="test"
+      value={true}
+      onChange={action('onChange!')}
+      defaultChecked={true}
+      indeterminate={boolean('indeterminate', true)}>
         Indeterminate
       </Checkbox>
     </div>
