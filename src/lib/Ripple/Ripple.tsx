@@ -11,10 +11,22 @@ interface IRippleState {
 }
 
 export default class Ripple extends React.Component<IRippleProps, IRippleState> {
+  private mounted: boolean = false;
   constructor(props) {
     super(props);
     this.state = { ripples: [] };
     this.enableRippleEffect = this.enableRippleEffect.bind(this);
+  }
+
+  componentDidMount() {
+    this.mounted = true;
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
+    this.setState(() => {
+      return { ripples: [] };
+    });
   }
 
   enableRippleEffect(event) {
@@ -33,6 +45,9 @@ export default class Ripple extends React.Component<IRippleProps, IRippleState> 
 
     // Remove ripple component after 800ms.
     timer(1300).then(() => {
+      if (!this.mounted) {
+        return;
+      }
       this.setState((prevState: IRippleState) => {
         return { ripples: prevState.ripples.filter(ripple => ripple.key !== key) };
       });
