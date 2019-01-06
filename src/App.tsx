@@ -8,7 +8,7 @@ import ButtonsDemo from './app/ButtonsDemo';
 import FormsDemo from './app/FormsDemo';
 import TabsDemo from './app/TabsDemo';
 
-const routes = [
+const pages = [
   {
     component: FormsDemo,
     to: '/forms',
@@ -32,13 +32,21 @@ const routes = [
   },
 ];
 
+const links = [
+  {
+    to: '/',
+    name: 'components',
+    key: 'index'
+  }
+];
+
 class App extends React.Component {
   public render() {
     return (
       <div>
-        <Navbar brand={'Violet'} links={routes}>
+        <Navbar brand={'Violet'} links={links}>
           <Switch>
-            {routes.map(route => <Route key={route.key} path={route.to} component={route.component} />)}
+            {pages.map(page => <Route key={page.key} path={page.to} component={page.component} />)}
           </Switch>
         </Navbar>
       </div>

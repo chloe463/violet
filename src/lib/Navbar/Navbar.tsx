@@ -6,8 +6,8 @@ import './Navbar.css';
 interface IRouteDefinition {
   to: string;
   key: string;
-  component: any;
-  exact: boolean;
+  component?: any;
+  exact?: boolean;
   name: string;
 }
 
