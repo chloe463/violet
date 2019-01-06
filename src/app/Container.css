@@ -1,0 +1,97 @@
+/* .Container {
+  margin-top: -64px;
+}
+
+.Container__header {
+  width: 100vw;
+  padding-top: 64px;
+  height: 64px;
+  background-color: var(--brand);
+  color: var(--white);
+}
+
+.Container__heading {
+  font-size: 16pt;
+  font-weight: 300;
+  color: var(--white);
+  margin: 8px;
+  padding-left: 32px;
+}
+
+.Container__main {
+  display: flex;
+  flex-direction: row;
+}
+
+.Container__nav {
+  position: sticky;
+  top: 64px;
+  align-self: flex-start;
+  width: 20%;
+  margin: 16px;
+  background-color: var(--light-gray);
+}
+
+.Container__content {
+  width: 80%;
+  margin: 8px;
+} */
+
+.Container {
+  display: grid;
+  margin-top: -8px;
+  grid-template-rows: 72px 1fr;
+  grid-template-columns: 256px 1fr 120px;
+  grid-template-areas:
+    "header header header"
+    "nav content outline"
+}
+
+.Container__header {
+  grid-area: header;
+  background-color: var(--brand);
+}
+
+.Container__heading {
+  color: var(--white);
+  margin-left: 32px;
+  font-weight: 300;
+}
+
+.Container__nav {
+  grid-area: nav;
+}
+
+.Container__nav-list {
+  list-style: none;
+  background-color: var(--light-gray);
+  margin-left: 32px;
+  padding: 8px;
+  position: sticky;
+  top: 72px;
+}
+
+.Container__nav-item {
+  padding: 8px;
+}
+
+.Container__nav-item > a, .Container__nav-item:visited {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: rgba(0,0,0,.56);
+}
+
+.Container__nav-item > a:hover {
+  text-decoration: underline;
+  color: var(--brand);
+}
+
+.Container__content {
+  grid-area: content;
+}
+
+.Container__outline {
+  grid-area: outline;
+}

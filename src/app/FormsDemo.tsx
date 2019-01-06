@@ -8,6 +8,8 @@ import Radio from '../lib/Forms/Radio/Radio';
 import Option from '../lib/Forms/Select/Option';
 import Select from '../lib/Forms/Select/Select';
 
+import Container from './Container';
+
 interface IFormsDemoState {
   name: string;
   text: number | string;
@@ -76,53 +78,55 @@ export default class FormsDemo extends React.Component<{}, IFormsDemoState> {
 
   public render() {
     return (
-      <div className="FormsDemo">
-        <form className="Form">
-          <div className="Form__element">
-            <InputText
-              label="text"
-              value={this.state.text}
-              onChange={this.onInputTextChange}/>
-          </div>
-          <div className="Form__element">
-            <AutoComplete
-              value={this.state.autocomplete}
-              label="AutoComplete"
-              suggestions={suggestions}
-              onChange={this.onAutoCompleteChange}/>
-          </div>
-          <div className="Form__element">
-            <Radio name="radio" value="val1" label="radio1" onChange={this.onRadioChange} defaultChecked={this.state.radio==='val1'}/>
-            <Radio name="radio" value="val2" label="radio2" onChange={this.onRadioChange} defaultChecked={this.state.radio==='val2'}/>
-            <Radio name="radio" value="val3" label="radio3" onChange={this.onRadioChange} defaultChecked={this.state.radio==='val3'}/>
-          </div>
-          <div className="Form__element">
-            <Checkbox name="checkbox" value="val1"
-              onChange={this.onCheckboxChange} defaultChecked={this.state.checkbox.val1===true}>Checkbox1</Checkbox>
-            <Checkbox name="checkbox" value="val2"
-              onChange={this.onCheckboxChange} defaultChecked={this.state.checkbox.val2===true}>Checkbox2</Checkbox>
-            <Checkbox name="checkbox" value="val3"
-              onChange={this.onCheckboxChange} defaultChecked={this.state.checkbox.val3===true}>Checkbox3</Checkbox>
-            <Checkbox name="checkbox" value="val4"
-              onChange={this.onCheckboxChange} defaultChecked={this.state.checkbox.val4===true}
-              disabled={true}>Checkbox (Disabled)</Checkbox>
-            <Checkbox name="checkbox" value="val5"
-              onChange={this.onCheckboxChange} defaultChecked={this.state.checkbox.val5===true}
-              indeterminate={true}>Checkbox (indeterminate)</Checkbox>
-          </div>
-          <div className="Form__element">
-            <Select label="select" value={this.state.select} onChange={this.onSelectChange}>
-              <Option label="option1" value="val1" />
-              <Option label="option2" value="val2" />
-              <Option label="option3" value="val3" />
-              <Option label="option4" value="val4" />
-            </Select>
-          </div>
-          <div className="Form__element">
-            <DatePicker value={this.state.date} onChange={this.onDatePickerChange}/>
-          </div>
-        </form>
-      </div>
+      <Container title={'Forms'}>
+        <div className="FormsDemo">
+          <form className="Form">
+            <div className="Form__element">
+              <InputText
+                label="text"
+                value={this.state.text}
+                onChange={this.onInputTextChange} />
+            </div>
+            <div className="Form__element">
+              <AutoComplete
+                value={this.state.autocomplete}
+                label="AutoComplete"
+                suggestions={suggestions}
+                onChange={this.onAutoCompleteChange} />
+            </div>
+            <div className="Form__element">
+              <Radio name="radio" value="val1" label="radio1" onChange={this.onRadioChange} defaultChecked={this.state.radio === 'val1'} />
+              <Radio name="radio" value="val2" label="radio2" onChange={this.onRadioChange} defaultChecked={this.state.radio === 'val2'} />
+              <Radio name="radio" value="val3" label="radio3" onChange={this.onRadioChange} defaultChecked={this.state.radio === 'val3'} />
+            </div>
+            <div className="Form__element">
+              <Checkbox name="checkbox" value="val1"
+                onChange={this.onCheckboxChange} defaultChecked={this.state.checkbox.val1 === true}>Checkbox1</Checkbox>
+              <Checkbox name="checkbox" value="val2"
+                onChange={this.onCheckboxChange} defaultChecked={this.state.checkbox.val2 === true}>Checkbox2</Checkbox>
+              <Checkbox name="checkbox" value="val3"
+                onChange={this.onCheckboxChange} defaultChecked={this.state.checkbox.val3 === true}>Checkbox3</Checkbox>
+              <Checkbox name="checkbox" value="val4"
+                onChange={this.onCheckboxChange} defaultChecked={this.state.checkbox.val4 === true}
+                disabled={true}>Checkbox (Disabled)</Checkbox>
+              <Checkbox name="checkbox" value="val5"
+                onChange={this.onCheckboxChange} defaultChecked={this.state.checkbox.val5 === true}
+                indeterminate={true}>Checkbox (indeterminate)</Checkbox>
+            </div>
+            <div className="Form__element">
+              <Select label="select" value={this.state.select} onChange={this.onSelectChange}>
+                <Option label="option1" value="val1" />
+                <Option label="option2" value="val2" />
+                <Option label="option3" value="val3" />
+                <Option label="option4" value="val4" />
+              </Select>
+            </div>
+            <div className="Form__element">
+              <DatePicker value={this.state.date} onChange={this.onDatePickerChange} />
+            </div>
+          </form>
+        </div>
+      </Container>
     );
   }
 }
