@@ -257,9 +257,9 @@
   dependencies:
     csstype "^2.2.0"
 
-"@types/storybook__react@^3.0.8":
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/@types/storybook__react/-/storybook__react-3.0.8.tgz#58deb593361b7d5e6a6eca09bc7889b613980925"
+"@types/storybook__react@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@types/storybook__react/-/storybook__react-4.0.2.tgz#f36fb399574c662e79c1a0cf6e429b6ff730da40"
   dependencies:
     "@types/react" "*"
     "@types/webpack-env" "*"
