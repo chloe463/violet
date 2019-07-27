@@ -35,7 +35,7 @@ class App extends React.Component<{}, IAppState> {
   constructor(props: any) {
     super(props);
     this.state = {
-      checkbox: { val1: false, val2: false, val3: false },
+      checkbox: { val1: false, val2: false, val3: false, val4: true, val5: false },
       name: '',
       radio: '',
       text: '',
@@ -136,9 +136,18 @@ class App extends React.Component<{}, IAppState> {
             <Radio name="radio" value="val3" label="radio3" onChange={this.onRadioChange} defaultChecked={this.state.radio==='val3'}/>
           </div>
           <div className="Form__element">
-            <Checkbox name="checkbox" value="val1" label="checkbox1" onChange={this.onCheckboxChange} defaultChecked={this.state.checkbox.val1===true}/>
-            <Checkbox name="checkbox" value="val2" label="checkbox2" onChange={this.onCheckboxChange} defaultChecked={this.state.checkbox.val2===true}/>
-            <Checkbox name="checkbox" value="val3" label="checkbox3" onChange={this.onCheckboxChange} defaultChecked={this.state.checkbox.val3===true}/>
+            <Checkbox name="checkbox" value="val1"
+              onChange={this.onCheckboxChange} defaultChecked={this.state.checkbox.val1===true}>Checkbox1</Checkbox>
+            <Checkbox name="checkbox" value="val2"
+              onChange={this.onCheckboxChange} defaultChecked={this.state.checkbox.val2===true}>Checkbox2</Checkbox>
+            <Checkbox name="checkbox" value="val3"
+              onChange={this.onCheckboxChange} defaultChecked={this.state.checkbox.val3===true}>Checkbox3</Checkbox>
+            <Checkbox name="checkbox" value="val4"
+              onChange={this.onCheckboxChange} defaultChecked={this.state.checkbox.val4===true}
+              disabled={true}>Checkbox (Disabled)</Checkbox>
+            <Checkbox name="checkbox" value="val5"
+              onChange={this.onCheckboxChange} defaultChecked={this.state.checkbox.val5===true}
+              indeterminate={true}>Checkbox (indeterminate)</Checkbox>
           </div>
           <div className="Form__element">
             <Select label="select" value={this.state.select} onChange={this.onSelectChange}>
