@@ -1,4 +1,5 @@
 .Option {
+  position: relative;
   list-style: none;
   line-height: 2.7em;
   text-indent: 18px;

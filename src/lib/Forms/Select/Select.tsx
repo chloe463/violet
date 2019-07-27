@@ -26,7 +26,9 @@ export default class Select extends React.Component<ISelectProps, ISelectState> 
 
   onOptionClick(event) {
     this.props.onChange(event);
-    this.setState({ optionsVisibility: false });
+    setTimeout(() => {
+      this.setState({ optionsVisibility: false });
+    }, 500);
   }
 
   toggleVisibility() {
