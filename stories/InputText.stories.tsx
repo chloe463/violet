@@ -1,39 +1,47 @@
-import * as React from 'react';
-
-import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, text, boolean } from '@storybook/addon-knobs';
-
+import { boolean, text, withKnobs } from '@storybook/addon-knobs';
+import * as React from 'react';
 import '../src/index.css';
+import { InputText } from '../src/lib/Forms/InputText/InputText';
 import './index.storybook.css';
 
-import InputText from '../src/lib/Forms/InputText/InputText';
+export default {
+  title: "Forms/InputText",
+  decorators: [withKnobs],
+}
 
-storiesOf('InputText', module)
-  .addDecorator(withKnobs)
-  .add('With empty value and no label', () =>
-    <div className="container">
-      <InputText value={''} label="" onChange={action('onChange!')} />
-    </div>
-  )
-  .add('With empty value and label', () =>
-    <div className="container">
-      <InputText value={''} label={text('label', 'Input text here')} onChange={action('onChange!')} />
-    </div>
-  )
-  .add('With value and no label', () =>
-    <div className="container">
-      <InputText value={'This is a test message'} label="" onChange={action('onChange!')} />
-    </div>
-  )
-  .add('With value and label', () =>
-    <div className="container">
-      <InputText value={'This is a test message'} label="Label" onChange={action('onChange!')} />
-    </div>
-  )
-  .add('Disabled', () =>
-    <div className="container">
-      <InputText value={'This is a test message'} label="Label" onChange={action('onChange!')}
-        disabled={boolean('InputText disabled', true)}/>
-    </div>
-  );
+export const withEmptyValueAndNoLabel = () => (
+  <div className="container">
+    <InputText value={''} label="" onChange={action('onChange!')} aria-label="no-label-text-field" />
+  </div>
+);
+
+export const withEmptyValueAndLabel = () => (
+  <div className="container">
+    <InputText value={''} label={text('label', 'Input text here')} onChange={action('onChange!')} aria-label="with-label-text-field" />
+  </div>
+);
+
+export const withValueAndNoLAbel = () => (
+  <div className="container">
+    <InputText value={'This is a test message'} label="" onChange={action('onChange!')}  aria-label="with-label-text-field"/>
+  </div>
+);
+
+export const withValueAndLabel = () => (
+  <div className="container">
+    <InputText value={'This is a test message'} label="Label" onChange={action('onChange!')}  aria-label="with-label-text-field"/>
+  </div>
+);
+
+export const disabled = () => (
+  <div className="container">
+    <InputText
+      value={'This is a test message'}
+      label="Label"
+      onChange={action('onChange!')}
+      disabled={boolean('InputText disabled', true)}
+      aria-label="with-label-text-field"
+    />
+  </div>
+);

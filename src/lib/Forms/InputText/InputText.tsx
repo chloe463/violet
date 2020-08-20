@@ -1,52 +1,31 @@
+import { AriaTextFieldOptions, useTextField } from '@react-aria/textfield';
 import * as React from 'react';
-
+import { useRef } from "react";
 import './InputText.css';
 
 export interface IInputTextProps {
-  label?: string;
-  value: any;
-  onFocus?: (event: any) => void;
-  onBlur?: (event: any) => void;
-  onChange: (event: any) => void;
-  disabled?: boolean;
+  label: string;
 }
 
-export default class InputText extends React.Component<IInputTextProps> {
-  constructor(props: IInputTextProps) {
-    super(props);
+export type InputTextProps = IInputTextProps & AriaTextFieldOptions;
 
-    this.onFocus = this.onFocus.bind(this);
-    this.onBlur  = this.onBlur.bind(this);
-  }
+export const InputText: React.FC<InputTextProps> = (props) => {
+  const { label, children, ...rest } = props;
+  const textFieldRef = useRef<HTMLInputElement | null>(null);
+  const { inputProps, labelProps } = useTextField(rest as AriaTextFieldOptions, textFieldRef);
 
-  onFocus(event): void {
-    if (this.props.onFocus !== undefined) {
-      this.props.onFocus(event);
-    }
-  }
-
-  onBlur(event): void {
-    if (this.props.onBlur) {
-      this.props.onBlur(event);
-    }
-  }
-
-  render() {
-    return (
-      <div className="InputText">
-        <input type="text"
-          className="InputText__form"
-          value={this.props.value}
-          onChange={this.props.onChange}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          placeholder="&nbsp;"
-          disabled={this.props.disabled}
-        />
-        <span className="InputText__placeholder">{this.props.label}</span>
-        <div className="InputText__underline" />
-        <div className="InputText__underline--focus" />
-      </div>
-    );
-  }
+  return (
+    <div className="InputText">
+      <input type="text"
+        className="InputText__form"
+        disabled={props.isDisabled}
+        ref={textFieldRef}
+        {...inputProps}
+        placeholder="&nbsp;"
+      />
+      <span className="InputText__placeholder" {...labelProps}>{props.label}</span>
+      <div className="InputText__underline" />
+      <div className="InputText__underline--focus" />
+    </div>
+  );
 }
